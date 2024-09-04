@@ -1,0 +1,76 @@
+<!-- 
+<p>PARENT</p>
+
+<app-parent></app-parent> -->
+<!-- @defer (on viewport) {
+  <div *ngFor="let o of data">
+    <app-card>
+      <div header>
+        <h3>{{o.title}}</h3>
+      </div>
+      <div>
+        <p>{{o.content}}</p>
+      </div>
+      <div footer>
+        <p>{{o.footer}}</p>
+      </div>
+    </app-card>
+  </div>
+} @placeholder {
+  <p>Future Cards</p>
+} @loading (minimum 2s) {
+  <p>Loading Cards...</p>
+}
+
+@for (product of products; track $index) {
+  <app-products>
+    <div id>
+      <h2>{{product.id}}</h2>
+    </div>
+    <div id="name">
+      {{product.name}}
+    </div>
+    <div price>
+      <p>{{product.price}}</p>
+    </div>
+
+  </app-products>
+} -->
+
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name</label>
+    <input id="name" formControlName="name">
+    <div *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched">
+      Name is required and must be at least 3 characters long.
+    </div>
+  </div>
+
+  <div>
+    <label for="email">Email</label>
+    <input id="email" formControlName="email">
+    <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+      Enter a valid email address.
+    </div>
+  </div>
+
+  <div formGroupName="address">
+    <h3>Address</h3>
+
+    <label for="street">Street</label>
+    <input id="street" formControlName="street">
+
+    <label for="city">City</label>
+    <input id="city" formControlName="city">
+
+    <label for="postalCode">Postal Code</label>
+    <input id="postalCode" formControlName="postalCode">
+  </div>
+
+  <button type="submit" [disabled]="userForm.invalid">Submit</button>
+</form>
+
+<!-- {{totalCost}}
+
+<button [attr.data-test-id]="testId">Primary CTA</button> -->
+<router-outlet></router-outlet>
